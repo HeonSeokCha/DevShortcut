@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DevShortcut</string>
+    <string name="widget_description">탭 한 번으로 USB 디버깅을 켜고 끕니다</string>
+    <string name="state_on">ADB ON</string>
+    <string name="state_off">ADB OFF</string>
+    <string name="state_no_permission">권한 필요</string>
+    <string name="toast_on">USB 디버깅 켜짐</string>
+    <string name="toast_off">USB 디버깅 꺼짐</string>
+    <string name="toast_failed">설정 변경 실패: 권한을 확인하세요</string>
+</resources>
