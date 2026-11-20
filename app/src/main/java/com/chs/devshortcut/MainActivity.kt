@@ -87,7 +87,7 @@ fun MainScreen(modifier: Modifier) {
     LifecycleResumeEffect(Unit) {
         hasPermission = Util.hasPermission(context)
         adbEnabled = Util.isEnabled(context)
-        DevWidgetProvider.updateAll(context)
+        scope.launch { DevWidget.updateAll(context) }
         onPauseOrDispose { }
     }
 
@@ -95,7 +95,7 @@ fun MainScreen(modifier: Modifier) {
         val observer = object : ContentObserver(Handler(Looper.getMainLooper())) {
             override fun onChange(selfChange: Boolean) {
                 adbEnabled = Util.isEnabled(context)
-                DevWidgetProvider.updateAll(context)
+                scope.launch { DevWidget.updateAll(context) }
             }
         }
         context.contentResolver.registerContentObserver(
@@ -134,7 +134,7 @@ fun MainScreen(modifier: Modifier) {
                         onCheckedChange = { checked ->
                             if (Util.setEnabled(context, checked)) {
                                 adbEnabled = Util.isEnabled(context)
-                                DevWidgetProvider.updateAll(context)
+                                scope.launch { DevWidget.updateAll(context) }
                             } else {
                                 Toast.makeText(context, R.string.toast_failed, Toast.LENGTH_SHORT).show()
                             }
